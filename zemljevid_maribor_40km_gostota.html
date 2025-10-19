@@ -40,7 +40,7 @@
 <div style="font-size: 14px; line-height: 1.55;">
     🎰 Igralni saloni (Radenci + Ptuj + Maribor): <b>326</b><br/>
     🏛️ Casino MOND (Šentilj): <b>432</b><br/>
-    👥 Prebivalstvo (SURS, 1. 7. 2023): <b>113,245</b><br/>
+    👥 preb. (SURS, 1. 7. 2023): <b>113,245</b><br/>
 <hr style="border:0;border-top:1px solid #ccc; margin:6px 0;"/>
     📊 Skupaj avtomatov: <b>758</b><br/>
     📈 Gostota (vključno z MOND): <b>6.69</b> / 1 000 preb.
@@ -48,35 +48,36 @@
 </div>
 
 <div id="opomba" style="position: fixed; right: 12px; top: 170px; z-index: 9998;
-    background-color: white; border: 2px solid #555; border-radius: 10px;
-    padding: 10px 12px; width: 360px; font-size: 14px; line-height: 1.45;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
+  background-color: white; border: 2px solid #555; border-radius: 10px;
+  padding: 10px 12px; width: 360px; font-size: 14px; line-height: 1.45;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
 <b>Opomba</b><br/>
-      V zgornjem izračunu nismo upoštevali Casina Fontana v Rogaški Slatini, kjer je nameščenih 100 igralnih avtomatov.<br/>
-      Po naši oceni je vpliv te igralnice na prebivalce Maribora nepomemben.
-    </div>
+  V zgornjem izračunu nismo upoštevali Casina Fontana v Rogaški Slatini, kjer je nameščenih 100 igralnih avtomatov.<br/>
+  Po naši oceni je vpliv te igralnice na prebivalce Maribora nepomemben.
+</div>
 
 <script>
 (function() {
-  function alignPanels() {
+  function initPanels() {
     var stats = document.getElementById('stats-panel');
-    var opomba = document.getElementById('opomba');
-    if (!stats || !opomba) return;
-    // Compute desired width from stats panel (computed width)
-    var statsRect = stats.getBoundingClientRect();
-    var desiredWidth = Math.round(statsRect.width);
-    // Apply equal widths
-    stats.style.width = desiredWidth + 'px';
-    opomba.style.width = desiredWidth + 'px';
-    // Place opomba 1cm (~38px) below stats-panel
-    var gap = 38; // approx 1 cm on typical displays
-    var top = window.scrollY + statsRect.top + statsRect.height + gap;
-    // Since both are position:fixed, use just pixel from viewport top
-    opomba.style.top = (stats.offsetTop + stats.offsetHeight + gap) + 'px';
-    opomba.style.right = getComputedStyle(stats).right || '12px';
+    var op = document.getElementById('opomba');
+    if (!stats || !op) return;
+    // Natural width then +1cm
+    stats.style.width = 'auto';
+    var rect = stats.getBoundingClientRect();
+    var desired = Math.round(rect.width) + 38;
+    stats.style.width = desired + 'px';
+    op.style.width = desired + 'px';
+    // 1cm gap
+    var gap = 38;
+    var statsTop = parseInt((getComputedStyle(stats).top || '12px'), 10) || 12;
+    op.style.top = (statsTop + stats.offsetHeight + gap) + 'px';
+    op.style.right = getComputedStyle(stats).right || '12px';
+    stats.style.zIndex = 9999;
+    op.style.zIndex = 9998;
   }
-  window.addEventListener('load', alignPanels);
-  window.addEventListener('resize', alignPanels);
+  window.addEventListener('load', initPanels);
+  window.addEventListener('resize', initPanels);
 })();
 </script>
 </body>
