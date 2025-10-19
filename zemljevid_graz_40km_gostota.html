@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c271d1c5451fbc3c8b93522a425097d2 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c271d1c5451fbc3c8b93522a425097d2" ></div>
+        
+    
+<div id="stats-panel" style="position: fixed; top: 12px; right: 12px; z-index: 9999;
+     background: white; border: 2px solid #333; border-radius: 10px; padding: 12px 14px;
+     box-shadow: 0 4px 14px rgba(0,0,0,0.25); font-family: Arial, sans-serif;">
+  <div style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">Statistika (Graz, 40 km)</div>
+  <div style="font-size: 14px; line-height: 1.4;">
+    🎰 Avtomati v salonih: <b>534</b><br/>
+    🎲 Casino Graz: <b>164</b><br/>
+    👥 Prebivalstvo (2025): <b>306&nbsp;068</b><br/>
+    📊 Skupaj avtomatov: <b>698</b><br/>
+    📈 Gostota: <b>2,28 / 1&nbsp;000 preb.</b>
+  </div>
+</div>
+</body>
+<script>
+    
+    
+            var map_c271d1c5451fbc3c8b93522a425097d2 = L.map(
+                "map_c271d1c5451fbc3c8b93522a425097d2",
+                {
+                    center: [47.0707, 15.4395],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 11,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e99d6347619b5b74911dd7f07b546f3b = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var circle_741d1f0ae25fd8e6c21c64b1d4bdc046 = L.circle(
+                [47.0707, 15.4395],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40000, "stroke": true, "weight": 2}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var marker_e9bd60d9488d7b1a70101afc9e3d45e9 = L.marker(
+                [47.0707, 15.4389],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_640d250bfa1dbd768094cbcd54f99371 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_e9bd60d9488d7b1a70101afc9e3d45e9.setIcon(icon_640d250bfa1dbd768094cbcd54f99371);
+        
+    
+        var popup_23f8172e472f67906cd6d3546b203f8f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a1a77439cf367fc6f301d6963767c43c = $(`<div id="html_a1a77439cf367fc6f301d6963767c43c" style="width: 100.0%; height: 100.0%;"><b>Casino Graz</b><br>Igralnih avtomatov: <b>164</b></div>`)[0];
+            popup_23f8172e472f67906cd6d3546b203f8f.setContent(html_a1a77439cf367fc6f301d6963767c43c);
+        
+
+        marker_e9bd60d9488d7b1a70101afc9e3d45e9.bindPopup(popup_23f8172e472f67906cd6d3546b203f8f)
+        ;
+
+        
+    
+    
+            marker_e9bd60d9488d7b1a70101afc9e3d45e9.bindTooltip(
+                `<div>
+                     Casino Graz (164 avtomatov)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_456fc311a01f0853446660a7f8f83159 = L.marker(
+                [47.0707, 15.4395],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_e60fb956bf504c53139bfbf2847c5905 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ok-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_456fc311a01f0853446660a7f8f83159.setIcon(icon_e60fb956bf504c53139bfbf2847c5905);
+        
+    
+        var popup_7b23a68c88382727e223a2906a50c39b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7c1222df62ebea61345449c342691e15 = $(`<div id="html_7c1222df62ebea61345449c342691e15" style="width: 100.0%; height: 100.0%;"><b>Graz - igralni saloni</b><br>Igralnih avtomatov: <b>249</b></div>`)[0];
+            popup_7b23a68c88382727e223a2906a50c39b.setContent(html_7c1222df62ebea61345449c342691e15);
+        
+
+        marker_456fc311a01f0853446660a7f8f83159.bindPopup(popup_7b23a68c88382727e223a2906a50c39b)
+        ;
+
+        
+    
+    
+            marker_456fc311a01f0853446660a7f8f83159.bindTooltip(
+                `<div>
+                     Graz - igralni saloni: 249
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e026a2068620a6105c659b085a100c8c = L.marker(
+                [46.988, 15.409],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_22213ebe2ad69895cd377aaadfda289b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ok-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_e026a2068620a6105c659b085a100c8c.setIcon(icon_22213ebe2ad69895cd377aaadfda289b);
+        
+    
+        var popup_05a6031e5a2ce192afcf380c9c3d3c0d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f5767843cd24bc3162df49783a38d22d = $(`<div id="html_f5767843cd24bc3162df49783a38d22d" style="width: 100.0%; height: 100.0%;"><b>Seiersberg-Pirka</b><br>Igralnih avtomatov: <b>27</b></div>`)[0];
+            popup_05a6031e5a2ce192afcf380c9c3d3c0d.setContent(html_f5767843cd24bc3162df49783a38d22d);
+        
+
+        marker_e026a2068620a6105c659b085a100c8c.bindPopup(popup_05a6031e5a2ce192afcf380c9c3d3c0d)
+        ;
+
+        
+    
+    
+            marker_e026a2068620a6105c659b085a100c8c.bindTooltip(
+                `<div>
+                     Seiersberg-Pirka: 27
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_916580b3db9d5c56d9e72a38bf75d35f = L.marker(
+                [46.963, 15.513],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_f24d4a635fd3104908c879a0181e16c8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ok-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_916580b3db9d5c56d9e72a38bf75d35f.setIcon(icon_f24d4a635fd3104908c879a0181e16c8);
+        
+    
+        var popup_62b91a0156863fdb115176b95666316a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e0a5544771e504c8341c3b4093cc3801 = $(`<div id="html_e0a5544771e504c8341c3b4093cc3801" style="width: 100.0%; height: 100.0%;"><b>Hausmannstätten</b><br>Igralnih avtomatov: <b>11</b></div>`)[0];
+            popup_62b91a0156863fdb115176b95666316a.setContent(html_e0a5544771e504c8341c3b4093cc3801);
+        
+
+        marker_916580b3db9d5c56d9e72a38bf75d35f.bindPopup(popup_62b91a0156863fdb115176b95666316a)
+        ;
+
+        
+    
+    
+            marker_916580b3db9d5c56d9e72a38bf75d35f.bindTooltip(
+                `<div>
+                     Hausmannstätten: 11
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5559e2849ce893e8e816c0f20728c84b = L.marker(
+                [46.987, 15.585],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_7aeab507de51ff6a63634ade3dd4c373 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ok-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_5559e2849ce893e8e816c0f20728c84b.setIcon(icon_7aeab507de51ff6a63634ade3dd4c373);
+        
+    
+        var popup_3666b0828e6c9f310070d8486a6183b6 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_caa26b473e21c4fe62f413e9b0548f6a = $(`<div id="html_caa26b473e21c4fe62f413e9b0548f6a" style="width: 100.0%; height: 100.0%;"><b>Vasoldsberg</b><br>Igralnih avtomatov: <b>10</b></div>`)[0];
+            popup_3666b0828e6c9f310070d8486a6183b6.setContent(html_caa26b473e21c4fe62f413e9b0548f6a);
+        
+
+        marker_5559e2849ce893e8e816c0f20728c84b.bindPopup(popup_3666b0828e6c9f310070d8486a6183b6)
+        ;
+
+        
+    
+    
+            marker_5559e2849ce893e8e816c0f20728c84b.bindTooltip(
+                `<div>
+                     Vasoldsberg: 10
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0f1180bf8f76dc6bdba99ded24de659d = L.marker(
+                [47.136, 15.349],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_18d6959ec4f986a1a88cd88a20f543d8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ok-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_0f1180bf8f76dc6bdba99ded24de659d.setIcon(icon_18d6959ec4f986a1a88cd88a20f543d8);
+        
+    
+        var popup_2deac3d81d332001921a6d2d073604ae = L.popup({"maxWidth": "100%"});
+
+        
+            var html_da4e09dcde1fc7d5aa80cd433d15914a = $(`<div id="html_da4e09dcde1fc7d5aa80cd433d15914a" style="width: 100.0%; height: 100.0%;"><b>Gratkorn</b><br>Igralnih avtomatov: <b>24</b></div>`)[0];
+            popup_2deac3d81d332001921a6d2d073604ae.setContent(html_da4e09dcde1fc7d5aa80cd433d15914a);
+        
+
+        marker_0f1180bf8f76dc6bdba99ded24de659d.bindPopup(popup_2deac3d81d332001921a6d2d073604ae)
+        ;
+
+        
+    
+    
+            marker_0f1180bf8f76dc6bdba99ded24de659d.bindTooltip(
+                `<div>
+                     Gratkorn: 24
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_49317820adefdb6457c752d9c0f61436 = L.marker(
+                [46.957, 15.333],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_bafc565585cd8c56a001da26ad67fc96 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ok-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_49317820adefdb6457c752d9c0f61436.setIcon(icon_bafc565585cd8c56a001da26ad67fc96);
+        
+    
+        var popup_fca81bc8fe2b7446b1513126e6bb114e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_cddd09118ccfda3a0e0764f002746c17 = $(`<div id="html_cddd09118ccfda3a0e0764f002746c17" style="width: 100.0%; height: 100.0%;"><b>Lieboch</b><br>Igralnih avtomatov: <b>12</b></div>`)[0];
+            popup_fca81bc8fe2b7446b1513126e6bb114e.setContent(html_cddd09118ccfda3a0e0764f002746c17);
+        
+
+        marker_49317820adefdb6457c752d9c0f61436.bindPopup(popup_fca81bc8fe2b7446b1513126e6bb114e)
+        ;
+
+        
+    
+    
+            marker_49317820adefdb6457c752d9c0f61436.bindTooltip(
+                `<div>
+                     Lieboch: 12
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ddfd4f4012ab523d876a34688570a0f3 = L.marker(
+                [47.065, 15.75],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_848105e2814b81a5fa491337d1dfaa2b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ok-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_ddfd4f4012ab523d876a34688570a0f3.setIcon(icon_848105e2814b81a5fa491337d1dfaa2b);
+        
+    
+        var popup_358c0b54b7bc434ff9cd1e504db712f2 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_aa369146123684c975d26d538c1cd6b9 = $(`<div id="html_aa369146123684c975d26d538c1cd6b9" style="width: 100.0%; height: 100.0%;"><b>Hofstätten an der Raab</b><br>Igralnih avtomatov: <b>12</b></div>`)[0];
+            popup_358c0b54b7bc434ff9cd1e504db712f2.setContent(html_aa369146123684c975d26d538c1cd6b9);
+        
+
+        marker_ddfd4f4012ab523d876a34688570a0f3.bindPopup(popup_358c0b54b7bc434ff9cd1e504db712f2)
+        ;
+
+        
+    
+    
+            marker_ddfd4f4012ab523d876a34688570a0f3.bindTooltip(
+                `<div>
+                     Hofstätten an der Raab: 12
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e86bc9f34f67e393e046325ef3781e56 = L.marker(
+                [47.216, 15.623],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_f0f0e021ad8db441ced8681f273d2737 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ok-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_e86bc9f34f67e393e046325ef3781e56.setIcon(icon_f0f0e021ad8db441ced8681f273d2737);
+        
+    
+        var popup_53babb80f591d002cf970ce38dae655d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a27628e50c4b51afd44adb1df5a64cf2 = $(`<div id="html_a27628e50c4b51afd44adb1df5a64cf2" style="width: 100.0%; height: 100.0%;"><b>Weiz</b><br>Igralnih avtomatov: <b>28</b></div>`)[0];
+            popup_53babb80f591d002cf970ce38dae655d.setContent(html_a27628e50c4b51afd44adb1df5a64cf2);
+        
+
+        marker_e86bc9f34f67e393e046325ef3781e56.bindPopup(popup_53babb80f591d002cf970ce38dae655d)
+        ;
+
+        
+    
+    
+            marker_e86bc9f34f67e393e046325ef3781e56.bindTooltip(
+                `<div>
+                     Weiz: 28
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9acde26d47b0c9ad23f6302abc5dfeac = L.marker(
+                [47.105, 15.71],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_cd992663d1ac5e1dc1399b3bf8582764 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ok-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_9acde26d47b0c9ad23f6302abc5dfeac.setIcon(icon_cd992663d1ac5e1dc1399b3bf8582764);
+        
+    
+        var popup_c7422a285dbbe92b508968cef93d04d7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_b600c6880552b43ec949b355b3763283 = $(`<div id="html_b600c6880552b43ec949b355b3763283" style="width: 100.0%; height: 100.0%;"><b>Gleisdorf</b><br>Igralnih avtomatov: <b>36</b></div>`)[0];
+            popup_c7422a285dbbe92b508968cef93d04d7.setContent(html_b600c6880552b43ec949b355b3763283);
+        
+
+        marker_9acde26d47b0c9ad23f6302abc5dfeac.bindPopup(popup_c7422a285dbbe92b508968cef93d04d7)
+        ;
+
+        
+    
+    
+            marker_9acde26d47b0c9ad23f6302abc5dfeac.bindTooltip(
+                `<div>
+                     Gleisdorf: 36
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_41f514b5301258641e4c84b176e4556e = L.marker(
+                [46.78, 15.544],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_59439b64a6b5dba12761a69b5273ae9c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ok-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_41f514b5301258641e4c84b176e4556e.setIcon(icon_59439b64a6b5dba12761a69b5273ae9c);
+        
+    
+        var popup_b372ec55ffd67b13ef67311907a5547b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_81a0f1a5ac986c3a8bdacb1331022173 = $(`<div id="html_81a0f1a5ac986c3a8bdacb1331022173" style="width: 100.0%; height: 100.0%;"><b>Leibnitz</b><br>Igralnih avtomatov: <b>44</b></div>`)[0];
+            popup_b372ec55ffd67b13ef67311907a5547b.setContent(html_81a0f1a5ac986c3a8bdacb1331022173);
+        
+
+        marker_41f514b5301258641e4c84b176e4556e.bindPopup(popup_b372ec55ffd67b13ef67311907a5547b)
+        ;
+
+        
+    
+    
+            marker_41f514b5301258641e4c84b176e4556e.bindTooltip(
+                `<div>
+                     Leibnitz: 44
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d1b6952a7c3731e711fc34c39274c05e = L.marker(
+                [46.736, 15.621],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_d95aa6d8549612251ee3c7159ceb355b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ok-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_d1b6952a7c3731e711fc34c39274c05e.setIcon(icon_d95aa6d8549612251ee3c7159ceb355b);
+        
+    
+        var popup_e440d5f83015307117897b334d291659 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d27b65ba553190d1f88fc7d76b847ac0 = $(`<div id="html_d27b65ba553190d1f88fc7d76b847ac0" style="width: 100.0%; height: 100.0%;"><b>Vogau</b><br>Igralnih avtomatov: <b>22</b></div>`)[0];
+            popup_e440d5f83015307117897b334d291659.setContent(html_d27b65ba553190d1f88fc7d76b847ac0);
+        
+
+        marker_d1b6952a7c3731e711fc34c39274c05e.bindPopup(popup_e440d5f83015307117897b334d291659)
+        ;
+
+        
+    
+    
+            marker_d1b6952a7c3731e711fc34c39274c05e.bindTooltip(
+                `<div>
+                     Vogau: 22
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d9884c9848c6667bb15c1a2168606a3f = L.marker(
+                [46.82, 15.3],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_63661d8f2e1539e97c22e36285191ea1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ok-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_d9884c9848c6667bb15c1a2168606a3f.setIcon(icon_63661d8f2e1539e97c22e36285191ea1);
+        
+    
+        var popup_1ccae9682f06f5cd1eff3a251d69de68 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_18cbf07d9f5362da1ad44b7f05816c04 = $(`<div id="html_18cbf07d9f5362da1ad44b7f05816c04" style="width: 100.0%; height: 100.0%;"><b>Preding</b><br>Igralnih avtomatov: <b>11</b></div>`)[0];
+            popup_1ccae9682f06f5cd1eff3a251d69de68.setContent(html_18cbf07d9f5362da1ad44b7f05816c04);
+        
+
+        marker_d9884c9848c6667bb15c1a2168606a3f.bindPopup(popup_1ccae9682f06f5cd1eff3a251d69de68)
+        ;
+
+        
+    
+    
+            marker_d9884c9848c6667bb15c1a2168606a3f.bindTooltip(
+                `<div>
+                     Preding: 11
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_99f60bf77090eaecb11ff91e3f483664 = L.marker(
+                [47.072, 15.181],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_013266a9f72f51d24126d45d6cd77e0b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ok-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_99f60bf77090eaecb11ff91e3f483664.setIcon(icon_013266a9f72f51d24126d45d6cd77e0b);
+        
+    
+        var popup_25a4aa1bd338f5c933950206d8ea6e62 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d7e12cb4c4129316e4191434f09b4b4d = $(`<div id="html_d7e12cb4c4129316e4191434f09b4b4d" style="width: 100.0%; height: 100.0%;"><b>Rosental an der Kainach</b><br>Igralnih avtomatov: <b>14</b></div>`)[0];
+            popup_25a4aa1bd338f5c933950206d8ea6e62.setContent(html_d7e12cb4c4129316e4191434f09b4b4d);
+        
+
+        marker_99f60bf77090eaecb11ff91e3f483664.bindPopup(popup_25a4aa1bd338f5c933950206d8ea6e62)
+        ;
+
+        
+    
+    
+            marker_99f60bf77090eaecb11ff91e3f483664.bindTooltip(
+                `<div>
+                     Rosental an der Kainach: 14
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0ea1e9767d028f7668fa516a73629c61 = L.marker(
+                [46.816, 15.222],
+                {}
+            ).addTo(map_c271d1c5451fbc3c8b93522a425097d2);
+        
+    
+            var icon_1409fb927566d018844701056b74a908 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ok-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_0ea1e9767d028f7668fa516a73629c61.setIcon(icon_1409fb927566d018844701056b74a908);
+        
+    
+        var popup_e97b2e84cc0990ae597a846c07324a6c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_492dc08463b74a7f9fdef6c1ec9f2def = $(`<div id="html_492dc08463b74a7f9fdef6c1ec9f2def" style="width: 100.0%; height: 100.0%;"><b>Deutschlandsberg</b><br>Igralnih avtomatov: <b>34</b></div>`)[0];
+            popup_e97b2e84cc0990ae597a846c07324a6c.setContent(html_492dc08463b74a7f9fdef6c1ec9f2def);
+        
+
+        marker_0ea1e9767d028f7668fa516a73629c61.bindPopup(popup_e97b2e84cc0990ae597a846c07324a6c)
+        ;
+
+        
+    
+    
+            marker_0ea1e9767d028f7668fa516a73629c61.bindTooltip(
+                `<div>
+                     Deutschlandsberg: 34
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>

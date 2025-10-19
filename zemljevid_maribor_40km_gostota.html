@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+<style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+<style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css" rel="stylesheet"/>
+<meta content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<style>
+                #map_02e6876f58ac3403f86d081d90bed519 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+</head>
+<body>
+<div class="folium-map" id="map_02e6876f58ac3403f86d081d90bed519"></div>
+<div id="stats-panel" style="position: fixed; top: 12px; right: 12px; z-index: 9999;
+     background: white; border: 2px solid #333; border-radius: 10px; padding: 12px 14px;
+     box-shadow: 0 4px 14px rgba(0,0,0,0.25); font-family: Arial, sans-serif; max-width: 360px;">
+<div style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">Statistika (Maribor, 40 km)</div>
+<div style="font-size: 14px; line-height: 1.55;">
+    🎰 Igralni saloni (Radenci + Ptuj + Maribor): <b>326</b><br/>
+    🏛️ Casino MOND (Šentilj): <b>432</b><br/>
+    👥 Prebivalstvo (SURS, 1. 7. 2023): <b>113,245</b><br/>
+<hr style="border:0;border-top:1px solid #ccc; margin:6px 0;"/>
+    📊 Skupaj avtomatov: <b>758</b><br/>
+    📈 Gostota (vključno z MOND): <b>6.69</b> / 1 000 preb.
+  </div>
+</div>
+
+<div id="opomba" style="position: fixed; right: 12px; top: 170px; z-index: 9998;
+    background-color: white; border: 2px solid #555; border-radius: 10px;
+    padding: 10px 12px; width: 360px; font-size: 14px; line-height: 1.45;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
+<b>Opomba</b><br/>
+      V zgornjem izračunu nismo upoštevali Casina Fontana v Rogaški Slatini, kjer je nameščenih 100 igralnih avtomatov.<br/>
+      Po naši oceni je vpliv te igralnice na prebivalce Maribora nepomemben.
+    </div>
+
+<script>
+(function() {
+  function alignPanels() {
+    var stats = document.getElementById('stats-panel');
+    var opomba = document.getElementById('opomba');
+    if (!stats || !opomba) return;
+    // Compute desired width from stats panel (computed width)
+    var statsRect = stats.getBoundingClientRect();
+    var desiredWidth = Math.round(statsRect.width);
+    // Apply equal widths
+    stats.style.width = desiredWidth + 'px';
+    opomba.style.width = desiredWidth + 'px';
+    // Place opomba 1cm (~38px) below stats-panel
+    var gap = 38; // approx 1 cm on typical displays
+    var top = window.scrollY + statsRect.top + statsRect.height + gap;
+    // Since both are position:fixed, use just pixel from viewport top
+    opomba.style.top = (stats.offsetTop + stats.offsetHeight + gap) + 'px';
+    opomba.style.right = getComputedStyle(stats).right || '12px';
+  }
+  window.addEventListener('load', alignPanels);
+  window.addEventListener('resize', alignPanels);
+})();
+</script>
+</body>
+<script>
+    
+    
+            var map_02e6876f58ac3403f86d081d90bed519 = L.map(
+                "map_02e6876f58ac3403f86d081d90bed519",
+                {
+                    center: [46.5547, 15.6459],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 11,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6cd44807e80a0a4fdce77291a6147525 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_02e6876f58ac3403f86d081d90bed519);
+        
+    
+            var circle_6775168d70663fa823f6648e6f953e95 = L.circle(
+                [46.5547, 15.6459],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40000, "stroke": true, "weight": 2}
+            ).addTo(map_02e6876f58ac3403f86d081d90bed519);
+        
+    
+            var marker_2727be9b5c09538252b28f0747fe5071 = L.marker(
+                [46.6406, 16.0434],
+                {}
+            ).addTo(map_02e6876f58ac3403f86d081d90bed519);
+        
+    
+            var icon_f251c9a2817d62f6c6d4995a97787666 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_2727be9b5c09538252b28f0747fe5071.setIcon(icon_f251c9a2817d62f6c6d4995a97787666);
+        
+    
+        var popup_98f4581a4476aa1dbf17ba11b4d712dc = L.popup({"maxWidth": "100%"});
+
+        
+            var html_827beed910ac536d2d2a47978d5a8c4c = $(`<div id="html_827beed910ac536d2d2a47978d5a8c4c" style="width: 100.0%; height: 100.0%;"><b>Igralni salon AS Radenci</b><br/>Radenci<br/>Igralnih avtomatov: <b>109</b></div>`)[0];
+            popup_98f4581a4476aa1dbf17ba11b4d712dc.setContent(html_827beed910ac536d2d2a47978d5a8c4c);
+        
+
+        marker_2727be9b5c09538252b28f0747fe5071.bindPopup(popup_98f4581a4476aa1dbf17ba11b4d712dc)
+        ;
+
+        
+    
+    
+            marker_2727be9b5c09538252b28f0747fe5071.bindTooltip(
+                `<div>
+                     Radenci: 109
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fa175451050f89a6384b209a91ff0682 = L.marker(
+                [46.4203, 15.87],
+                {}
+            ).addTo(map_02e6876f58ac3403f86d081d90bed519);
+        
+    
+            var icon_a42a9bef266e5b010522cf6a6db82c62 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_fa175451050f89a6384b209a91ff0682.setIcon(icon_a42a9bef266e5b010522cf6a6db82c62);
+        
+    
+        var popup_9c912aca4ee3b1b049d3bdf32b41afae = L.popup({"maxWidth": "100%"});
+
+        
+            var html_38c3d558758b7214f7f8dfc94364c874 = $(`<div id="html_38c3d558758b7214f7f8dfc94364c874" style="width: 100.0%; height: 100.0%;"><b>Igralni salon Admiral Ptuj</b><br/>Ptuj<br/>Igralnih avtomatov: <b>102</b></div>`)[0];
+            popup_9c912aca4ee3b1b049d3bdf32b41afae.setContent(html_38c3d558758b7214f7f8dfc94364c874);
+        
+
+        marker_fa175451050f89a6384b209a91ff0682.bindPopup(popup_9c912aca4ee3b1b049d3bdf32b41afae)
+        ;
+
+        
+    
+    
+            marker_fa175451050f89a6384b209a91ff0682.bindTooltip(
+                `<div>
+                     Ptuj: 102
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_46e0579af97c3e28a135d6bc7d53cd0d = L.marker(
+                [46.559, 15.6478],
+                {}
+            ).addTo(map_02e6876f58ac3403f86d081d90bed519);
+        
+    
+            var icon_d17288ae700577ef183757ef80fcab57 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_46e0579af97c3e28a135d6bc7d53cd0d.setIcon(icon_d17288ae700577ef183757ef80fcab57);
+        
+    
+        var popup_3b29418d94fb527038c7c0461faf4cb3 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4b9e65a689f2554251e37132a0b23661 = $(`<div id="html_4b9e65a689f2554251e37132a0b23661" style="width: 100.0%; height: 100.0%;"><b>Igralni salon Admiral Maribor</b><br/>Maribor<br/>Igralnih avtomatov: <b>115</b></div>`)[0];
+            popup_3b29418d94fb527038c7c0461faf4cb3.setContent(html_4b9e65a689f2554251e37132a0b23661);
+        
+
+        marker_46e0579af97c3e28a135d6bc7d53cd0d.bindPopup(popup_3b29418d94fb527038c7c0461faf4cb3)
+        ;
+
+        
+    
+    
+            marker_46e0579af97c3e28a135d6bc7d53cd0d.bindTooltip(
+                `<div>
+                     Maribor: 115
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e344a1860e983237eaef4ee760af9d93 = L.marker(
+                [46.681, 15.65],
+                {}
+            ).addTo(map_02e6876f58ac3403f86d081d90bed519);
+        
+    
+            var icon_03617e14d9bf67563be4b41255940288 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_e344a1860e983237eaef4ee760af9d93.setIcon(icon_03617e14d9bf67563be4b41255940288);
+        
+    
+        var popup_94fd4be3d8726878eb2d503d8ec02246 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9eeb2ec2694b50a04d8b13b5c5888a7b = $(`<div id="html_9eeb2ec2694b50a04d8b13b5c5888a7b" style="width: 100.0%; height: 100.0%;"><b>Casino Mond Šentilj</b><br/>Šentilj v Slovenskih goricah<br/>Igralnih avtomatov: <b>432</b></div>`)[0];
+            popup_94fd4be3d8726878eb2d503d8ec02246.setContent(html_9eeb2ec2694b50a04d8b13b5c5888a7b);
+        
+
+        marker_e344a1860e983237eaef4ee760af9d93.bindPopup(popup_94fd4be3d8726878eb2d503d8ec02246)
+        ;
+
+        
+    
+    
+            marker_e344a1860e983237eaef4ee760af9d93.bindTooltip(
+                `<div>
+                     Šentilj v Slovenskih goricah: 432
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
